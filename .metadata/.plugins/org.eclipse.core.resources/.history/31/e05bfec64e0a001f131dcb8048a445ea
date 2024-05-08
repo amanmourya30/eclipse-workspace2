@@ -1,0 +1,54 @@
+package automation.pageobjects;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class ProductCatalogue {
+
+		WebDriver driver;
+		public ProductCatalogue(WebDriver driver) {
+			//initialization
+			this.driver=driver;
+			PageFactory.initElements(driver, this);
+		}
+		
+		
+		@FindBy(xpath= "//div[@class='features_items']//div[@class='col-sm-4']")
+		List<WebElement> Products;
+		@FindBy(xpath= "//div[@class='modal-content']//p[1]")
+		List<WebElement> productAdded;
+		
+		By addToCart=By.xpath(".//a[contains(text(),'Add to cart')]");
+		
+		public List<WebElement> getProductList() {
+			return Products;
+		}
+	
+		public WebElement getProductByName(String productName) {
+			
+			WebElement prod=getProductList().stream().filter(product->
+			product.findElement(By.cssSelector("p")).getText().equals(productName)).findFirst().orElse(null);
+			return prod;
+		}
+		
+		public void addProductToCart(String productName) {
+			WebElement prod=getProductByName(productName);
+			prod.findElement(addToCart).click();	
+		}
+		
+		public void addedConfirmation(String Msg) {
+			String addedToCart= ((WebElement) productAdded).getText();
+			String ExpectedText=Msg;
+			if(addedToCart.equals(ExpectedText)){
+				System.out.println("Product Successfully added!!");
+			}
+			
+		}
+	
+	}
+

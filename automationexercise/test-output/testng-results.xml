@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-05-06T23:48:34 IST" name="Suite" finished-at="2024-05-06T23:49:30 IST" duration-ms="55722">
+    <groups>
+      <group name="purchase">
+        <method signature="StandAloneTest.AloneTest(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:automation.pageobjects.StandAloneTest@53045c6c]" name="AloneTest" class="automation.pageobjects.StandAloneTest"/>
+      </group> <!-- purchase -->
+    </groups>
+    <test started-at="2024-05-06T23:48:34 IST" name="ErrorValidationsTest" finished-at="2024-05-06T23:48:45 IST" duration-ms="10349">
+      <class name="automation.pageobjects.ErrorValidationsTest">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:automation.pageobjects.ErrorValidationsTest@70cf32e3]" started-at="2024-05-06T23:48:34 IST" name="launchApplication" finished-at="2024-05-06T23:48:43 IST" duration-ms="8285" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="LoginErrorValidation()[pri:0, instance:automation.pageobjects.ErrorValidationsTest@70cf32e3]" started-at="2024-05-06T23:48:43 IST" name="LoginErrorValidation" finished-at="2024-05-06T23:48:44 IST" duration-ms="1898" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginErrorValidation -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:automation.pageobjects.ErrorValidationsTest@70cf32e3]" started-at="2024-05-06T23:48:45 IST" name="tearDown" finished-at="2024-05-06T23:48:45 IST" duration-ms="118" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- automation.pageobjects.ErrorValidationsTest -->
+    </test> <!-- ErrorValidationsTest -->
+    <test started-at="2024-05-06T23:48:34 IST" name="StandAloneTest" finished-at="2024-05-06T23:49:30 IST" duration-ms="55722">
+      <class name="automation.pageobjects.StandAloneTest">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:automation.pageobjects.StandAloneTest@53045c6c]" started-at="2024-05-06T23:48:34 IST" name="launchApplication" finished-at="2024-05-06T23:48:43 IST" duration-ms="8609" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="AloneTest(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:automation.pageobjects.StandAloneTest@53045c6c]" started-at="2024-05-06T23:48:43 IST" name="AloneTest" data-provider="getData" finished-at="2024-05-06T23:49:00 IST" duration-ms="16681" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[azassociates31@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Qwerty@123]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Madame Top For Women]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AloneTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:automation.pageobjects.StandAloneTest@53045c6c]" started-at="2024-05-06T23:49:00 IST" name="tearDown" finished-at="2024-05-06T23:49:00 IST" duration-ms="199" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:automation.pageobjects.StandAloneTest@53045c6c]" started-at="2024-05-06T23:49:00 IST" name="launchApplication" finished-at="2024-05-06T23:49:07 IST" duration-ms="7137" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="AloneTest(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:automation.pageobjects.StandAloneTest@53045c6c]" started-at="2024-05-06T23:49:07 IST" name="AloneTest" data-provider="getData" finished-at="2024-05-06T23:49:30 IST" duration-ms="22860" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[dw1yuiatn6@example.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Qwerty@123]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Blue Cotton Indie Mickey Dress]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AloneTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:automation.pageobjects.StandAloneTest@53045c6c]" started-at="2024-05-06T23:49:30 IST" name="tearDown" finished-at="2024-05-06T23:49:30 IST" duration-ms="190" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- automation.pageobjects.StandAloneTest -->
+    </test> <!-- StandAloneTest -->
+  </suite> <!-- Suite -->
+</testng-results>

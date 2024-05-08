@@ -1,0 +1,65 @@
+package automation.pageobjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class LandingPage extends BaseTest {
+
+		WebDriver driver;
+		public LandingPage(WebDriver driver) {
+			//initialization
+			this.driver=driver;
+			PageFactory.initElements(driver, this);
+		}
+		
+		
+		@FindBy(name= "email")
+		WebElement userEmail;
+		@FindBy(xpath= "//input[@data-qa='login-password']")
+		WebElement passwordEle;
+		@FindBy(xpath="//button[@data-qa='login-button']")
+		WebElement submit;
+		@FindBy(css="a[href='/login']")
+		WebElement LoginPage;
+		@FindBy(css="a[href='/products']")
+		WebElement ProductsBtn;
+		@FindBy(xpath="//input[@name='password']/following-sibling::p")
+		WebElement errorMessage;
+		
+		@FindBy (id="aswift_6")
+		WebElement iframes6;
+		@FindBy (id="aswift_5")
+		WebElement iframes5;
+		@FindBy (id="aswift_4")
+		WebElement iframes4;
+		@FindBy (id="aswift_3")
+		WebElement iframes3;
+		@FindBy (id="aswift_2")
+		WebElement iframes2;
+		@FindBy (id="aswift_1")
+		WebElement iframes1;
+		public void loginApplication(String email, String password){
+			userEmail.sendKeys(email);
+			passwordEle.sendKeys(password);
+			submit.click();
+			handleGoogleAds(iframes1 ,  iframes2,  iframes3,
+			         iframes4,  iframes5,  iframes6);
+		}
+		public void goTo() {
+			driver.get("https://automationexercise.com/");
+			LoginPage.click();
+			}
+		public String getErrorMsg() {
+			return errorMessage.getText();
+		}
+		
+		public ProductCatalogue goToProductPage() {
+			ProductsBtn.click();
+			ProductCatalogue productCatalogue=new ProductCatalogue(driver);
+			return productCatalogue;
+		}
+	
+	}
+

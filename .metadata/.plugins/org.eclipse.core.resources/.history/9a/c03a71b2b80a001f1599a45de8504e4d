@@ -1,0 +1,47 @@
+package automation.pageobjects;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class LandingPage {
+
+		WebDriver driver;
+		public LandingPage(WebDriver driver) {
+			//initialization
+			this.driver=driver;
+			PageFactory.initElements(driver, this);
+		}
+		
+		
+		@FindBy(name= "email")
+		WebElement userEmail;
+		@FindBy(xpath= "//input[@data-qa='login-password']")
+		WebElement passwordEle;
+		@FindBy(xpath="//button[@data-qa='login-button']")
+		WebElement submit;
+		@FindBy(css="a[href='/login']")
+		WebElement LoginPage;
+		@FindBy(css="a[href='/products']")
+		WebElement ProductsBtn;
+		
+		public void loginApplication(String email, String password){
+			userEmail.sendKeys(email);
+			passwordEle.sendKeys(password);
+			submit.click();
+		}
+		public void goTo() {
+			driver.get("https://automationexercise.com/");
+			LoginPage.click();
+			}
+		
+		public ProductCatalogue goToProductPage() {
+			ProductsBtn.click();
+			ProductCatalogue productCatalogue=new ProductCatalogue(driver);
+			return productCatalogue;
+		}
+	
+	}
+

@@ -1,0 +1,59 @@
+package automation.pageobjects;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class StandAloneTest {
+
+	public static void main(String[] args) {
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
+		String productName="Madame Top For Women";
+		
+		LandingPage landingPage=new LandingPage(driver);
+		landingPage.goTo();
+		landingPage.goToLoginPage();
+		landingPage.loginApplication("azassociates31@gmail.com", "Qwerty@123");
+		landingPage.goToProductPage();
+		ProductCatalogue productCatalogue=new ProductCatalogue(driver);
+		List<WebElement>products=productCatalogue.getProductList();
+		productCatalogue.addProductToCart(productName);
+		productCatalogue.addedConfirmation("Your product has been added to cart.");	
+		
+		CartPage cartPage=new CartPage(driver);
+		cartPage.cartConfirmation(productName);
+		
+		//click on proceed to Checkout & Place order
+		driver.findElement(By.xpath("//a[contains(text(),'Proceed To Checkout')]")).click();
+		driver.findElement(By.xpath("//a[contains(text(),'Place Order')]")).click();
+		
+		//payment page
+		driver.findElement(By.name("name_on_card")).sendKeys("aman kumar");
+		driver.findElement(By.name("card_number")).sendKeys("123456789");
+		driver.findElement(By.name("cvc")).sendKeys("123");
+		driver.findElement(By.name("expiry_month")).sendKeys("02");
+		driver.findElement(By.name("expiry_year")).sendKeys("2036");
+		driver.findElement(By.xpath("//button[@id='submit']")).click();
+		
+		//order placed text
+		String orderPlacedTxt= driver.findElement(By.xpath("//h2[@data-qa='order-placed']/b")).getText();
+		if(orderPlacedTxt.equalsIgnoreCase("order placed!")) {
+			System.out.println("Congrats!! Order Placed Successfully!");
+		}
+		
+		
+		
+		
+	}
+
+}

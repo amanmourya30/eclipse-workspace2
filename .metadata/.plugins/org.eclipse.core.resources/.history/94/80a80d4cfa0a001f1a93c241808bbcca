@@ -1,0 +1,9 @@
+package automation.pageobjects;
+
+public class ErrorValidations extends BaseTest {
+	
+	
+	LandingPage landingPage=launchApplication();
+	landingPage.loginApplication("azassociates31@gmail.com", "Qwerty@123");
+
+}

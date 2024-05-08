@@ -1,0 +1,5 @@
+package automation.pageobjects;
+
+public class ErrorValidations {
+
+}

@@ -1,0 +1,19 @@
+package automation.pageobjects;
+
+import java.io.IOException;
+
+import org.testng.annotations.Test;
+
+public class ErrorValidations extends BaseTest {
+	
+	@Test
+	public void wrongEmailPass() throws IOException {
+		landingPage.goTo();
+		landingPage.loginApplication("azassociates3123@gmail.com", "Qwerty@123");
+		
+		String msg=landingPage.getErrorMsg();
+		System.out.println(msg);
+	}
+	
+
+}

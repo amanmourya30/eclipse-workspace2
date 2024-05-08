@@ -1,0 +1,105 @@
+package automation.pageobjects;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.time.Duration;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Properties;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class BaseTest {
+	public WebDriver driver;
+	public LandingPage landingPage;
+	public WebDriver initializeDriver() throws IOException {
+		
+		Properties prop=new Properties();
+		FileInputStream fis =new FileInputStream(System.getProperty("user.dir")+"\\src\\automation\\pageobjects\\Resources\\GlobalData.properties");
+		prop.load(fis);
+		String browserName=prop.getProperty("browser");
+		
+		if(browserName.equals("chrome")) {
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+		}
+		else if(browserName.equals("firefox")) {
+			WebDriverManager.firefoxdriver().setup();
+			driver = new FirefoxDriver();
+		}
+		else if(browserName.equals("edge")) {
+			WebDriverManager.edgedriver().setup();
+			driver = new EdgeDriver();
+		}
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		return driver;
+		}
+	@BeforeMethod(alwaysRun=true)
+	public LandingPage launchApplication() throws IOException {
+		driver= initializeDriver();		
+		landingPage=new LandingPage(driver);
+		landingPage.goTo();
+		return landingPage;
+	}
+	@AfterMethod(alwaysRun=true)
+	public void tearDown() {
+		driver.close();
+	}
+	
+
+
+
+	    public static void handleGoogleAds(WebDriver driver, WebElement... iframes) {
+	        // Define the list of locators to search for the close button
+	        List<By> locators = Arrays.asList(
+	                By.cssSelector("button[aria-label='Close ad']"),
+	                By.id("close-button")
+	                // Add more locators if needed
+	                // Example: By.cssSelector("button[class='close-btn']")
+	        );
+
+	        // Iterate through each iframe
+	        for (WebElement iframe : iframes) {
+	            if (iframe != null) {
+	                try {
+	                    // Switch to the iframe
+	                    driver.switchTo().frame(iframe);
+
+	                    // Search for the close button using each locator
+	                    for (By locator : locators) {
+	                        try {
+	                            // Find the close button
+	                            WebElement closeButton = driver.findElement(locator);
+	                            // Click on the close button
+	                            closeButton.click();
+	                            // If the close button is found, break the loop and return
+	                            return;
+	                        } catch (Exception e) {
+	                            // Continue to the next locator if the current one fails
+	                        }
+	                    }
+	                } catch (Exception e) {
+	                    // Handle any exceptions while interacting with the iframe
+	                    e.printStackTrace();
+	                } finally {
+	                    // Switch back to the default content
+	                    driver.switchTo().defaultContent();
+	                }
+	            }
+	        }
+	    }
+	}
+
+	
+
+

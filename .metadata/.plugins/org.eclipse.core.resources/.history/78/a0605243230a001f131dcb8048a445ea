@@ -1,0 +1,25 @@
+package automation.pageobjects;
+
+import org.openqa.selenium.WebDriver;
+
+public class LandingPage {
+
+	public static void main(String[] args) {
+		
+		WebDriver driver;
+		public LandingPage(WebDriver driver)
+		{
+			//initialization
+			this.driver=driver;
+		}
+		
+		
+		WebElement userEmail=driver.findElement(By.name("email"));
+		WebElement userPass=driver.findElement(By.xpath("//input[@data-qa='login-password']"));
+		WebElement loginButton=driver.findElement(By.xpath("//button[@data-qa='login-button']")));
+		
+		
+
+	}
+
+}

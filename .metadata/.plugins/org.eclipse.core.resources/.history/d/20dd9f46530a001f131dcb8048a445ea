@@ -1,0 +1,32 @@
+package automation.pageobjects;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class CartPage {
+
+		WebDriver driver;
+		public CartPage(WebDriver driver) {
+			//initialization
+			this.driver=driver;
+			PageFactory.initElements(driver, this);
+		}
+		
+		@FindBy(css= "a[href='/product_details/7']")
+		WebElement productInCart;
+		
+		//Check if product name is same as we added
+				
+		public void cartConfirmation(String productName) {
+			String cartProductTxt= productInCart.getText();
+			if(cartProductTxt.equalsIgnoreCase(productName)) {
+				System.out.println("Same product Added in Cart");
+			}
+			
+		}
+	
+	}
+
