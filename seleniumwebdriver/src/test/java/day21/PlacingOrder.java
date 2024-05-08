@@ -20,7 +20,11 @@ public class PlacingOrder {
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver(opt);
 		
-		
+		//hey this from chutney's laptop
+		//dfghfdfs
+		//asfgdffd//dfgfh
+		//gdhdf
+		//agdsfhgdhfhgrdfvc 
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.get("https://automationexercise.com/");
